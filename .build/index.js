@@ -33,7 +33,7 @@ const populateDB = async () => {
         var _a, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k, _l, _m, _n, _o, _p;
         let description = (_a = d == null ? void 0 : d.snippet) == null ? void 0 : _a.description.replace(/'/g, "\u2032");
         description = description.replace(/^"|"/g, "\u2032");
-        await (0, import_graphql_request.request)("https://ytbackend.bhargabnath.repl.co", `
+        await (0, import_graphql_request.request)("https://ytvideofetcherserver.bhargabnath.repl.co/", `
         mutation {
           addVideo(videoNew:{
             videoId: "${(_b = d == null ? void 0 : d.id) == null ? void 0 : _b.videoId}",

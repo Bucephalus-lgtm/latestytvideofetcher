@@ -17,7 +17,7 @@ const populateDB = async () => {
       let description:string = d?.snippet?.description.replace(/'/g, "′");
       description = description.replace(/^"|"/g, "′");
 
-      await request('https://ytbackend.bhargabnath.repl.co', `
+      await request('https://ytvideofetcherserver.bhargabnath.repl.co/', `
         mutation {
           addVideo(videoNew:{
             videoId: "${d?.id?.videoId}",

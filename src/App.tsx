@@ -2,45 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { useQuery, gql } from "@apollo/client";
 import './App.css';
 
-// const VIDEOS_QUERY = gql`
-//  query Videos($offset: Int, $limit: Int) {
-//     videos(offset: $offset, limit: $limit) {
-//       id,
-//       videoId,
-//       publishedDateTime,
-//       title,
-//       description,
-//       thumbnailUrl
-//   }
-// }
-// `;
-
-const VIDEOS_QUERY = gql`
- query Videos {
-    videos {
-      id,
-      videoId,
-      publishedDateTime,
-      title,
-      description,
-      thumbnailUrl
-  }
-}
-`;
-
 export default function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const { data, loading, error } = useQuery(VIDEOS_QUERY,
-    // {
-    //   variables: {
-    //     offset: 0,
-    //     limit: 2
-    // }}
+  const [offset, setOffset] = useState(0);
+  const limit: number = 10;
+  const { data, loading, error } = useQuery(gql`
+     query  {
+        videos(offset:${offset}, limit: ${limit}) {
+          id,
+          videoId,
+          title,
+          description,
+          thumbnailUrl
+      }
+    }
+  `,
   );
-  const videosPerPage: number = 2;
-  const [videos, setVideos] = useState([]);
-  const totalVideos: number = 5;
+
+  const countVideos = useQuery(gql`
+     query {
+      countVideos
+     }
+  `,
+  );
 
   const filterVideos = (arr, query: string) => {
     if (!query || query == "") return arr;
@@ -93,6 +78,13 @@ export default function App() {
 
         <div className='row gap-3'>
 
+          {loading &&
+            <div className="d-flex justify-content-center">
+              <div className="spinner-border" role="status">
+                <span className="sr-only"></span>
+              </div>
+            </div>
+          }
           {displayVideos(data?.videos)}
 
         </div>
@@ -102,13 +94,21 @@ export default function App() {
         <nav aria-label="Page navigation example">
           <ul className="d-flex justify-content-center pagination">
             <li className={`${currentPage != 1 ? "page-item" : "visually-hidden"}`}>
-              <a className="page-link" href="#" aria-label="Previous">
+              <a className="page-link" onClick={() => {
+                setCurrentPage(prevState => prevState - 1);
+                setOffset(prevState => prevState - limit);
+              }} aria-label="Previous">
                 <span aria-hidden="true">&laquo;</span>
               </a>
             </li>
-            <li className="page-item"><a className="page-link" href="#">1</a></li>
-            <li className={`${currentPage * videosPerPage < totalVideos ? "page-item" : "visually-hidden"}`}>
-              <a className="page-link" href="#" aria-label="Next">
+            <li className="page-item"><a className="page-link" onClick={() => {
+              setOffset((currentPage - 1) * limit);
+            }}>{currentPage}</a></li>
+            <li className={`${currentPage * limit < countVideos?.data?.countVideos ? "page-item" : "visually-hidden"}`}>
+              <a className="page-link" onClick={() => {
+                setCurrentPage(prevState => prevState + 1);
+                setOffset(prevState => prevState + limit);
+              }} aria-label="Next">
                 <span aria-hidden="true">&raquo;</span>
               </a>
             </li>

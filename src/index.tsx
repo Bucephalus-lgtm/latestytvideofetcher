@@ -4,7 +4,7 @@ import App from './App';import { ApolloProvider, ApolloClient, InMemoryCache } f
 import './index.css';
 
 const client = new ApolloClient({
-  uri: "https://YTBackend-1.bhargabnath.repl.co",
+  uri: "https://YTBackend.bhargabnath.repl.co",
   cache: new InMemoryCache()
 });
 

@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App';import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import App from './App'; import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 import './index.css';
 
 const client = new ApolloClient({
-  uri: "https://YTBackend.bhargabnath.repl.co",
+  uri: "https://ytvideofetcherserver.bhargabnath.repl.co",
   cache: new InMemoryCache()
 });
 

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../database.ts"],
+  "sourcesContent": ["import { Sequelize } from 'sequelize';\nimport dotenv from 'dotenv'\n\ndotenv.config()\n\nconst sequelize = new Sequelize('test-db', 'user', 'pass', {\n  dialect: 'sqlite',\n  host: './dev.sqlite',\n})\n\nexport default sequelize;"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,uBAA0B;AAC1B,oBAAmB;AAEnB,cAAAA,QAAO,OAAO;AAEd,MAAM,YAAY,IAAI,2BAAU,WAAW,QAAQ,QAAQ;AAAA,EACzD,SAAS;AAAA,EACT,MAAM;AACR,CAAC;AAED,IAAO,mBAAQ;",
+  "names": ["dotenv"]
+}

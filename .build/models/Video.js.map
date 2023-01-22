@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../models/Video.ts"],
+  "sourcesContent": ["import { Model, DataTypes } from 'sequelize';\nimport sequelize from '../database';\n\nclass Video extends Model { };\n\nVideo.init({\n  videoId: {\n    type: DataTypes.STRING\n  },\n  title: {\n    type: DataTypes.STRING\n  },\n  description: {\n    type: DataTypes.STRING\n  },\n  publishedDateTime: {\n    type: DataTypes.STRING\n  },\n  thumbnailUrl: {\n    type: DataTypes.STRING\n  },\n  created: {\n    type: DataTypes.STRING\n  },\n  channelId: {\n    type: DataTypes.STRING\n  },\n  channelTitle: {\n    type: DataTypes.STRING\n  }\n\n}, {\n  sequelize,\n  modelName: 'video',\n  timestamps: false\n})\n\nexport default Video; "],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,uBAAiC;AACjC,sBAAsB;AAEtB,MAAM,cAAc,uBAAM;AAAE;AAAC;AAE7B,MAAM,KAAK;AAAA,EACT,SAAS;AAAA,IACP,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,OAAO;AAAA,IACL,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,aAAa;AAAA,IACX,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,mBAAmB;AAAA,IACjB,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,cAAc;AAAA,IACZ,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,SAAS;AAAA,IACP,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,WAAW;AAAA,IACT,MAAM,2BAAU;AAAA,EAClB;AAAA,EACA,cAAc;AAAA,IACZ,MAAM,2BAAU;AAAA,EAClB;AAEF,GAAG;AAAA,EACD,2BAAAA;AAAA,EACA,WAAW;AAAA,EACX,YAAY;AACd,CAAC;AAED,IAAO,gBAAQ;",
+  "names": ["sequelize"]
+}

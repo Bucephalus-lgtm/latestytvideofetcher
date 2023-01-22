@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../schemaGql.ts"],
+  "sourcesContent": ["import { gql } from \"apollo-server\"\nconst typeDefs = gql`\n type Query {\n    videos(offset:Int!, limit: Int!):[Video]\n    countVideos: Int\n    video(id:ID!):Video\n    searchByTitle(title:String!):[Video]\n    searchByDescription(description:String!):[Video]\n }\n type Video{\n     id:ID!\n     videoId:String\n     title:String\n     description:String\n     publishedDateTime:String\n     thumbnailUrl:String\n     created:String\n     channelId:String\n     channelTitle:String\n }\n type Mutation{\n     addVideo(videoNew:VideoInput!):Video\n }\n input VideoInput{\n     videoId:String\n     title:String\n     description:String\n     publishedDateTime:String\n     thumbnailUrl:String\n     created:String\n     channelId:String\n     channelTitle:String\n }\n`\nexport default typeDefs"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,2BAAoB;AACpB,MAAM,WAAW;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAiCjB,IAAO,oBAAQ;",
+  "names": []
+}

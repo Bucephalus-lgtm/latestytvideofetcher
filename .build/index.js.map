@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../index.ts"],
+  "sourcesContent": ["import { ApolloServer } from 'apollo-server'\nimport { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-core'\nimport typeDefs from './schemaGql'\nimport resolvers from './resolvers'\nimport sequelize from  './database'\n\n\nsequelize.sync().then(() => console.log(\"DB ready\"));\n\nconst server = new ApolloServer({\n  typeDefs,\n  resolvers,\n  plugins: [\n    ApolloServerPluginLandingPageGraphQLPlayground()\n  ]\n});\n\nserver.listen().then(({ url }) => {\n  console.log(`\uD83D\uDE80  Server ready at ${url}`);\n});"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA,2BAA6B;AAC7B,gCAA+D;AAC/D,uBAAqB;AACrB,uBAAsB;AACtB,sBAAuB;AAGvB,gBAAAA,QAAU,KAAK,EAAE,KAAK,MAAM,QAAQ,IAAI,UAAU,CAAC;AAEnD,MAAM,SAAS,IAAI,kCAAa;AAAA,EAC9B,2BAAAC;AAAA,EACA,4BAAAC;AAAA,EACA,SAAS;AAAA,QACP,0EAA+C;AAAA,EACjD;AACF,CAAC;AAED,OAAO,OAAO,EAAE,KAAK,CAAC,EAAE,IAAI,MAAM;AAChC,UAAQ,IAAI,8BAAuB,KAAK;AAC1C,CAAC;",
+  "names": ["sequelize", "typeDefs", "resolvers"]
+}

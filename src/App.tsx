@@ -64,7 +64,7 @@ export default function App() {
   return (
     <>
       <div className="container">
-        <h1 className='text-center'> Youtube Clone</h1>
+        <h1 className='text-center'> Youtube Video Fetcher</h1>
         <form>
           <div className="mb-3">
             <input type="text" className="form-control" placeholder='Search with title or description...'
